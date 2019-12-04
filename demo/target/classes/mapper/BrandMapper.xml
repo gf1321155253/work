@@ -13,15 +13,16 @@
     </sql>
 
 
-    <!-- 分页查询-->
-    <select id="findByPaging" resultMap="BaseResultMap" parameterType="java.lang.Integer">
-        select
-        <include refid="Base_Column_List"/>
-        from brand
+    <!-- 模糊查询-->
+    <select id="mhselect" resultMap="BaseResultMap">
+        select * from brand
+        where
+        goodsname like CONCAT('%',#{goodsname,jdbcType=VARCHAR},'%')
     </select>
 
 
-    <!--查询所有的方法begin-->
+
+    <!--findall()查询方法begin-->
     <select id="findall" resultType="com.example.demo.entity.Brand">
         select
         <include refid="Base_Column_List"/>

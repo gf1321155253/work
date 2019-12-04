@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%--<%@ taglib uri="http://jsptags.com/tags/navigation/pager" prefix="pg"%>--%>
 <%--
   Created by IntelliJ IDEA.
   User: aa
@@ -41,8 +42,8 @@
 </head>
 <body>
 <div class="bdiv">
-    <form action="bra" method="post">
-        <input type="text" placeholder="请输入商品名称" name="欧文">
+    <form action="/mhselect" method="post">
+        <input type="text" placeholder="请输入商品名称" name="goodsname">
         <input type="submit" value="查询">
         <table class="tab" border="1px" cellspacing="0px" cellpadding="0px">
             <tr>
@@ -52,15 +53,15 @@
                 <th>商品名称</th>
                 <th>操作</th>
             </tr>
-            <%--           <c:forEach items="${list}" var="tmp">--%>
-            <%--           <tr>--%>
-            <%--               <td>${tmp.id}</td>--%>
-            <%--               <td>2</td>--%>
-            <%--               <td>3</td>--%>
-            <%--               <td>4</td>--%>
-            <%--               <td><a href="brandindex?id=1">删除</a> | <a href="goodsupdate">修改</a> | <a href="goodsadd">新增</a></td>--%>
-            <%--           </tr>--%>
-            <%--           </c:forEach>--%>
+                       <c:forEach items="${list}" var="tmp">
+                       <tr>
+                           <td>${tmp.goodsname}</td>
+                           <td>2</td>
+                           <td>3</td>
+                           <td>4</td>
+                           <td><a href="brandindex?id=1">删除</a> | <a href="goodsupdate">修改</a> | <a href="goodsadd">新增</a></td>
+                       </tr>
+                       </c:forEach>
             <tr>
                 <td>2</td>
                 <td>2</td>
@@ -99,16 +100,44 @@
             </tr>
         </table>
 
-        <ul class="pagination">
-            <a href="#">上一页</a>
-            <a href="#">1</a>
-            <a href="#">2</a>
-            <a href="#">3</a>
-            <a href="#">4</a>
-            <a href="#">5</a>
-            <a href="#">下一页</a>
-        </ul>
+<%--        <c:set var="age" value="13"></c:set>--%>
+<%--        <c:if test="${age<12}">你是小学生</c:if>--%>
+<%--        <c:if test="${18>age&&age>12}">你是中学生 </c:if>--%>
+<%--        <c:if test="${age>18}">你高于中学生 </c:if>--%>
+
     </form>
 </div>
+
+<%--<div class="pgidxclass">--%>
+<%--    &lt;%&ndash; 定义分页风格：普通风格 &ndash;%&gt;--%>
+<%--    <pg:index>--%>
+<%--        <pg:first>--%>
+<%--            <a href="${pageUrl}">首页</a>--%>
+<%--        </pg:first>--%>
+<%--        <pg:prev>--%>
+<%--            <a href="${pageUrl }">上一页</a>--%>
+<%--        </pg:prev>--%>
+<%--        <pg:pages>--%>
+<%--            <c:choose>--%>
+<%--                &lt;%&ndash;当循环页码是当前页码，则该页码不可以导航，并显示为红色&ndash;%&gt;--%>
+<%--                <c:when test="${currentPageNumber eq pageNumber}">--%>
+<%--                    <font color="red">[${pageNumber }]</font>--%>
+<%--                </c:when>--%>
+
+<%--                &lt;%&ndash; 当循环页码不是当前页码，则该页码可以导航 &ndash;%&gt;--%>
+<%--                <c:otherwise>--%>
+<%--                    <a href="${pageUrl }">[${pageNumber }]</a>--%>
+<%--                </c:otherwise>--%>
+<%--            </c:choose>--%>
+<%--        </pg:pages>--%>
+<%--        <pg:next>--%>
+<%--            <a href="${pageUrl }">下一页</a>--%>
+<%--        </pg:next>--%>
+<%--        <pg:last>--%>
+<%--            <a href="${pageUrl }">尾页</a>--%>
+<%--        </pg:last>--%>
+<%--    </pg:index>--%>
+<%--</div>--%>
+<%--</pg:pager>--%>
 </body>
 </html>

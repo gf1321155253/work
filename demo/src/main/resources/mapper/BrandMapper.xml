@@ -22,7 +22,7 @@
 
 
 
-    <!--查询所有的方法begin-->
+    <!--findall()查询方法begin-->
     <select id="findall" resultType="com.example.demo.entity.Brand">
         select
         <include refid="Base_Column_List"/>
