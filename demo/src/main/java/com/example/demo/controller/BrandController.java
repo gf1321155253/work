@@ -93,6 +93,7 @@ public class BrandController {
     public ModelAndView mhselect(String goodsname){
         ModelAndView mv =new ModelAndView("/brand");
         List<Brand> brandList = service.mhselect(goodsname);
+        System.out.println(brandList);
         mv.addObject("mhlist","brandList");
         return mv;
     }
