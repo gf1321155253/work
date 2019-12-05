@@ -2,6 +2,7 @@ package com.example.demo.service;
 
 import com.example.demo.dao.BrandMapper;
 import com.example.demo.entity.Brand;
+import com.github.pagehelper.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -31,5 +32,10 @@ public class BrandService {
 
     public List<Brand> mhselect(String goodsname){
         return brandMapper.mhselect(goodsname);
+    }
+
+//    分页查询语句
+    public Page<Brand> getUserList() {
+        return brandMapper.getUserList();
     }
 }

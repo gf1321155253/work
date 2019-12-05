@@ -1,15 +1,34 @@
 package com.example.demo.entity;
 
+import org.apache.ibatis.type.Alias;
+
+@Alias("brand")
 public class Brand {
+
     private Integer id;
-
     private String goodstype;
-
     private Float goodsprice;
-
     private String goodsbrand;
-
     private String goodsname;
+
+    public Brand(){
+
+    }
+
+    public Brand(String goodstype, Float goodsprice,String goodsbrand,String goodsname) {
+        this.goodstype = goodstype;
+        this.goodsprice = goodsprice;
+        this.goodsbrand = goodsbrand;
+        this.goodsname = goodsname;
+    }
+
+    public Brand(int id, String goodstype, Float goodsprice,String goodsbrand,String goodsname) {
+        this.id = id;
+        this.goodstype = goodstype;
+        this.goodsprice = goodsprice;
+        this.goodsbrand = goodsbrand;
+        this.goodsname = goodsname;
+    }
 
     public Integer getId() {
         return id;
@@ -51,3 +70,4 @@ public class Brand {
         this.goodsname = goodsname == null ? null : goodsname.trim();
     }
 }
+

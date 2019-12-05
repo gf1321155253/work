@@ -1,7 +1,9 @@
 package com.example.demo.dao;
 
 import com.example.demo.entity.Brand;
+import com.github.pagehelper.Page;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -26,4 +28,8 @@ public interface BrandMapper {
 
     //模糊查询
     List<Brand> mhselect(String goodsname);
+
+    //分页查询语句
+    @Select("SELECT * FROM brand")
+    Page<Brand> getUserList();
 }

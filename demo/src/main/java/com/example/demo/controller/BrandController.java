@@ -1,8 +1,11 @@
 package com.example.demo.controller;
 
 
+import com.example.demo.dao.BrandMapper;
 import com.example.demo.entity.Brand;
 import com.example.demo.service.BrandService;
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -91,12 +94,25 @@ public class BrandController {
 //  模糊查询
     @RequestMapping("/mhselect")
     public ModelAndView mhselect(String goodsname){
-        ModelAndView mv =new ModelAndView("/brand");
+        ModelAndView mv =new ModelAndView("/selectbrand");
         List<Brand> brandList = service.mhselect(goodsname);
         System.out.println(brandList);
         mv.addObject("mhlist","brandList");
         return mv;
     }
+
+    //分页
+    //http://localhost:8080/getUserList?pageNum=1
+    @RequestMapping("/getUserList")
+    public ModelAndView getUserList(Integer pageNum){
+        ModelAndView mv = new ModelAndView("pagebrand");
+        PageHelper.startPage(pageNum, 5);
+        Page<Brand> userList= service.getUserList();
+        mv.addObject("pagelist","userList");
+        return mv;
+    }
+
+
 
 
 }

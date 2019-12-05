@@ -45,51 +45,34 @@
                 <th>商品名称</th>
                 <th>操作</th>
             </tr>
-<%--                       <c:forEach items="${list}" var="tmp">--%>
-                       <tr>
-                           <td>${tmp.goodsname}</td>
-                           <td>2</td>
-                           <td>3</td>
-                           <td>4</td>
-                           <td><a href="brandindex?id=1">删除</a> | <a href="goodsupdate">修改</a> | <a href="goodsadd">新增</a></td>
-                       </tr>
-<%--                       </c:forEach>--%>
+            <%--                       <c:forEach items="${pagelist}" var="tmp">--%>
             <tr>
-                <td>2</td>
+                <td>${tmp.goodsname}</td>
                 <td>2</td>
                 <td>3</td>
                 <td>4</td>
+                <td><a href="brandindex?id=1">删除</a> | <a href="goodsupdate">修改</a> | <a href="goodsadd">新增</a></td>
+            </tr>
+            <%--                       </c:forEach>--%>
+            <tr>
+                <td>分页</td>
+                <td>分页</td>
+                <td>分页</td>
+                <td>分页</td>
                 <td><a href="javascript:void(0);" onclick="del(19)">删除</a> | <a
                         href="goodsupdate?id=2&goodstype=1&goodsbrand=1&goodsname=1&goodssprice=1">修改</a> | <a
                         href="goodsadd">新增</a></td>
             </tr>
             <tr>
-                <td>2</td>
-                <td>2</td>
-                <td>3</td>
-                <td>4</td>
+                <td>分页</td>
+                <td>分页</td>
+                <td>分页</td>
+                <td>分页</td>
                 <td><a href="javascript:void(0);" onclick="del(19)">删除</a> | <a
                         href="goodsupdate?id=2&goodstype=1&goodsbrand=1&goodsname=1&goodssprice=1">修改</a> | <a
                         href="goodsadd">新增</a></td>
             </tr>
-            <tr>
-                <td>2</td>
-                <td>2</td>
-                <td>3</td>
-                <td>4</td>
-                <td><a href="javascript:void(0);" onclick="del(19)">删除</a> | <a
-                        href="goodsupdate?id=2&goodstype=1&goodsbrand=1&goodsname=1&goodssprice=1">修改</a> | <a
-                        href="goodsadd">新增</a></td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>2</td>
-                <td>3</td>
-                <td>4</td>
-                <td><a href="javascript:void(0);" onclick="del(19)">删除</a> | <a
-                        href="goodsupdate?id=2&goodstype=1&goodsbrand=1&goodsname=1&goodssprice=1">修改</a> | <a
-                        href="goodsadd">新增</a></td>
-            </tr>
+
         </table>
     </form>
 </div>
