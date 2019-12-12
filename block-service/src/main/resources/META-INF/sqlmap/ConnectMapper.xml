@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.mwgroup.block.dao.ConnectDao">
+
+
+    <insert id="addConnect" parameterType="com.mwgroup.block.entity.ConnectEntity">
+        insert into connect (
+                             uid,
+                             mobile,
+                             email,
+                             type,
+                             `desc`,
+                             states,
+                             create_time,
+                             update_time,
+                             is_deleted
+        ) values (
+                  #{entity.uid},
+                  #{entity.mobile},
+                  #{entity.email},
+                  #{entity.type},
+                  #{entity.desc},
+                  #{entity.states},
+                  now(),
+                  now(),
+                  0
+                         )
+
+    </insert>
+
+
+
+    <select id="queryStatusByUid" resultType="com.mwgroup.block.entity.ConnectEntity">
+        select id,
+               uid,
+               states
+        from connect
+        where uid = #{uid}
+        and is_deleted = 0
+    </select>
+</mapper>

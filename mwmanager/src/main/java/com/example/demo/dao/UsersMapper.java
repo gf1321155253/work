@@ -3,9 +3,7 @@ package com.example.demo.dao;
 import com.example.demo.entity.Users;
 import org.apache.ibatis.annotations.Mapper;
 
-/*
-* 描述： 用户mapper类
-* */
+import java.util.List;
 
 @Mapper
 public interface UsersMapper {
@@ -20,4 +18,6 @@ public interface UsersMapper {
     int updateByPrimaryKeySelective(Users record);
 
     int updateByPrimaryKey(Users record);
+
+    List<Users> findall();
 }

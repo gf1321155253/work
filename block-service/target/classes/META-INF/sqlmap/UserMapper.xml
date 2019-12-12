@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.mwgroup.block.dao.UserDao">
+
+
+    <select id="getUserByUid" resultType="com.mwgroup.block.entity.UserEntity">
+        select uid,
+               name,
+               photo,
+               email
+        from user
+        where uid = #{uid}
+    </select>
+
+    <select id="getUserAuthByUid" resultType="com.mwgroup.block.entity.UserEntity">
+        select uid,
+               password
+        from user
+        where uid = #{uid}
+    </select>
+
+
+    <select id="getUserForLogin" resultType="com.mwgroup.block.entity.UserEntity">
+        select
+        uid,
+        password
+        from
+        user
+        where is_deleted = 0
+        <if test="login.loginType == 1">
+            and mobile = #{login.account}
+        </if>
+
+        <if test="login.loginType ==2 ">
+            and email = #{login.account}
+        </if>
+    </select>
+
+
+    <insert id="insertUser" parameterType="com.mwgroup.block.entity.UserEntity">
+        insert into user(uid,
+                         mobile,
+                         email,
+                         name,
+                         photo,
+                         password,
+                         create_time,
+                         update_time,
+                         is_deleted)
+        values (#{entity.uid},
+                #{entity.mobile},
+                #{entity.email},
+                #{entity.name},
+                #{entity.photo},
+                #{entity.password},
+                now(),
+                now(),
+                0)
+    </insert>
+
+
+    <update id="updatePassword">
+        update user
+        set password = #{password}
+        where uid = #{uid}
+    </update>
+
+
+</mapper>
