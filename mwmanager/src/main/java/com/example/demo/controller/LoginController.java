@@ -1,36 +1,38 @@
 package com.example.demo.controller;
 
 import com.example.demo.entity.Users;
-import com.example.demo.service.UsersService;
-import com.sun.deploy.net.HttpResponse;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import com.example.demo.service.UserService;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.ModelAndView;
-
-import java.util.List;
+import org.springframework.web.bind.annotation.*;
 
 /*
 * 描述：用户控制
 * */
 
-@Api(value = "用户接口")
 @RestController
 @RequestMapping("/mw/user")
 public class LoginController {
-    @Autowired
-    private UsersService usersService;
 
-    @ApiOperation(value = "用户登陆")
-    @RequestMapping(value = "login",method = RequestMethod.POST)
-    public HttpResponse login(@RequestBody Users users){
-        List<Users> usersList = usersService.findall();
-            System.out.println(usersList);
-        return null;
+    @Autowired
+    private UserService usersService;
+
+
+    /*
+    * 用户登录
+    * */
+    @CrossOrigin    //解决跨域问题
+    @RequestMapping(value = "login",method = RequestMethod.GET)
+    public String login(Users users) {
+        System.out.println(usersService.select(users.getMobile()));
+
+        System.out.println(users.getMobile());
+        System.out.println(users.getPassword());
+        //返回0是错误的 返回1是正确的
+//        if (usersService.select(users) == (null)){
+//            return "0";
+//        }
+        return "1";
     }
 
 }

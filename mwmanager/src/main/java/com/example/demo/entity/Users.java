@@ -1,8 +1,10 @@
 package com.example.demo.entity;
 
+import org.springframework.core.style.ToStringCreator;
+
 import java.util.Date;
 
-public class User {
+public class Users {
     private Long uid;
 
     private String mobile;
@@ -91,5 +93,13 @@ public class User {
 
     public void setIsDeleted(Byte isDeleted) {
         this.isDeleted = isDeleted;
+    }
+
+    @Override
+    public String toString() {
+        return "Users{" +
+                "mobile='" + mobile + '\'' +
+                ", password='" + password + '\'' +
+                '}';
     }
 }
