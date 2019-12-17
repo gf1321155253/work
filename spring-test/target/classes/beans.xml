@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<!--    使用spring创建对象
+
+        id = 变量名
+        class = new 的对象
+        property 相当于给对象中的属性设置一个值
+        name是类中的具体的属性
+-->
+<!--    <bean id="hello" class="com.kuang.pojo.dao.Hello">-->
+<!--        <property name="str" value="Spring11">-->
+<!--        </property>-->
+<!--    </bean>-->
+
+<!--    下标赋值 有参构造写法-->
+<!--    <bean id="hello" class="com.kuang.pojo.dao.Hello">-->
+<!--        <constructor-arg index="0" value="我是有参构造的方法！"></constructor-arg>-->
+<!--    </bean>-->
+    <!--    常用的有参构造写法-->
+<!--    <bean id="hello" class="com.kuang.pojo.dao.Hello">-->
+<!--        <constructor-arg name="str" value="我是name方式的有参构造"></constructor-arg>-->
+<!--    </bean>-->
+<!--    <bean id="hellot" class="com.kuang.pojo.dao.HelloT">-->
+
+<!--    </bean>-->
+
+<!--    调用其他类中的无参构造
+        ref : 引用spring容器中创建好的对象
+        value ：具体的值基本数据类型
+-->
+    <bean id="hellos" class="com.kuang.pojo.dao.Hellos"></bean>
+    <bean id="hellof" class="com.kuang.pojo.dao.Hellof"></bean>
+
+    <bean id="helloi" class="com.kuang.pojo.service.HelloServiceImpl">
+        <property name="user" ref="hellof"></property>
+    </bean>
+</beans>

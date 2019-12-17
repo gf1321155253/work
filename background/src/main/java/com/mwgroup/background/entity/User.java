@@ -1,4 +1,4 @@
-package com.example.demo.entity;
+package com.mwgroup.background.entity;
 
 import java.util.Date;
 
@@ -91,5 +91,13 @@ public class User {
 
     public void setIsDeleted(Byte isDeleted) {
         this.isDeleted = isDeleted;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "mobile='" + mobile + '\'' +
+                ", password='" + password + '\'' +
+                '}';
     }
 }

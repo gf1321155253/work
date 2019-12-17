@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mwgroup.background.dao.ProductMapper">
+  <resultMap id="BaseResultMap" type="com.mwgroup.background.entity.Product">
+    <id column="pid" jdbcType="BIGINT" property="pid" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="rate" jdbcType="DECIMAL" property="rate" />
+    <result column="stock" jdbcType="INTEGER" property="stock" />
+    <result column="price" jdbcType="DECIMAL" property="price" />
+    <result column="period" jdbcType="INTEGER" property="period" />
+    <result column="period_type" jdbcType="TINYINT" property="periodType" />
+    <result column="type" jdbcType="TINYINT" property="type" />
+    <result column="source" jdbcType="TINYINT" property="source" />
+    <result column="sort" jdbcType="TINYINT" property="sort" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="is_deleted" jdbcType="TINYINT" property="isDeleted" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    pid, title, rate, stock, price, period, period_type, type, source, sort, create_time, 
+    update_time, is_deleted
+  </sql>
+
+  <!--显示所有算力产品-->
+  <select id="findall" resultType="com.mwgroup.background.entity.Product">
+    select
+    <include refid="Base_Column_List" />
+    from product
+    where is_deleted = 0
+    order by create_time desc
+  </select>
+
+  <!--虚拟删除-->
+  <update id="del">
+    UPDATE product
+    SET is_deleted = 1
+    WHERE pid = #{id}
+  </update>
+
+  <!--算力产品查询 搜索-->
+  <select id="select" resultType="com.mwgroup.background.entity.Product">
+    select
+    <include refid="Base_Column_List" />
+    FROM product
+    WHERE pid LIKE CONCAT('%',#{id},'%')  or title LIKE CONCAT('%',#{title},'%')
+  </select>
+
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from product
+    where pid = #{pid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from product
+    where pid = #{pid,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.mwgroup.background.entity.Product">
+    insert into product (pid, title, rate, 
+      stock, price, period, 
+      period_type, type, source, 
+      sort, create_time, update_time, 
+      is_deleted)
+    values (#{pid,jdbcType=BIGINT}, #{title,jdbcType=VARCHAR}, #{rate,jdbcType=DECIMAL}, 
+      #{stock,jdbcType=INTEGER}, #{price,jdbcType=DECIMAL}, #{period,jdbcType=INTEGER}, 
+      #{periodType,jdbcType=TINYINT}, #{type,jdbcType=TINYINT}, #{source,jdbcType=TINYINT}, 
+      #{sort,jdbcType=TINYINT}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{isDeleted,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.mwgroup.background.entity.Product">
+    insert into product
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="pid != null">
+        pid,
+      </if>
+      <if test="title != null">
+        title,
+      </if>
+      <if test="rate != null">
+        rate,
+      </if>
+      <if test="stock != null">
+        stock,
+      </if>
+      <if test="price != null">
+        price,
+      </if>
+      <if test="period != null">
+        period,
+      </if>
+      <if test="periodType != null">
+        period_type,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="source != null">
+        source,
+      </if>
+      <if test="sort != null">
+        sort,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="isDeleted != null">
+        is_deleted,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="pid != null">
+        #{pid,jdbcType=BIGINT},
+      </if>
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="rate != null">
+        #{rate,jdbcType=DECIMAL},
+      </if>
+      <if test="stock != null">
+        #{stock,jdbcType=INTEGER},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="period != null">
+        #{period,jdbcType=INTEGER},
+      </if>
+      <if test="periodType != null">
+        #{periodType,jdbcType=TINYINT},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=TINYINT},
+      </if>
+      <if test="source != null">
+        #{source,jdbcType=TINYINT},
+      </if>
+      <if test="sort != null">
+        #{sort,jdbcType=TINYINT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDeleted != null">
+        #{isDeleted,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mwgroup.background.entity.Product">
+    update product
+    <set>
+      <if test="title != null">
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="rate != null">
+        rate = #{rate,jdbcType=DECIMAL},
+      </if>
+      <if test="stock != null">
+        stock = #{stock,jdbcType=INTEGER},
+      </if>
+      <if test="price != null">
+        price = #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="period != null">
+        period = #{period,jdbcType=INTEGER},
+      </if>
+      <if test="periodType != null">
+        period_type = #{periodType,jdbcType=TINYINT},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=TINYINT},
+      </if>
+      <if test="source != null">
+        source = #{source,jdbcType=TINYINT},
+      </if>
+      <if test="sort != null">
+        sort = #{sort,jdbcType=TINYINT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDeleted != null">
+        is_deleted = #{isDeleted,jdbcType=TINYINT},
+      </if>
+    </set>
+    where pid = #{pid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mwgroup.background.entity.Product">
+    update product
+    set title = #{title,jdbcType=VARCHAR},
+      rate = #{rate,jdbcType=DECIMAL},
+      stock = #{stock,jdbcType=INTEGER},
+      price = #{price,jdbcType=DECIMAL},
+      period = #{period,jdbcType=INTEGER},
+      period_type = #{periodType,jdbcType=TINYINT},
+      type = #{type,jdbcType=TINYINT},
+      source = #{source,jdbcType=TINYINT},
+      sort = #{sort,jdbcType=TINYINT},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      is_deleted = #{isDeleted,jdbcType=TINYINT}
+    where pid = #{pid,jdbcType=BIGINT}
+  </update>
+</mapper>

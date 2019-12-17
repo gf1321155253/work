@@ -1,7 +1,5 @@
 package com.example.demo.service;
 
-import com.example.demo.dao.UsersMapper;
-import com.example.demo.entity.Users;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,10 +12,16 @@ import java.util.List;
 @Service
 public class UsersService {
     @Autowired
-    private UsersMapper usersMapper;
+    private UsersMapper userMapper;
+
+
+    //根据用户名查询密码
+    public Users selectByName(String mobile,String password){
+        return userMapper.selectByName(mobile,password);
+    }
 
     public List<Users> findall(){
-        return usersMapper.findall();
+        return userMapper.findall();
     }
 
 }
