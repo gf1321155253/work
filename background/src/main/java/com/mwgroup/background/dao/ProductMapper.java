@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
+
 @Mapper
 public interface ProductMapper {
     int deleteByPrimaryKey(Long pid);
@@ -17,6 +18,9 @@ public interface ProductMapper {
     int insertSelective(Product record);
 
     Product selectByPrimaryKey(Long pid);
+
+    //根据id查询算力 修改
+    Product selectById(@Param("id") Long id);
 
     //修改算力产品
     int updateByPrimaryKeySelective(Product record);

@@ -5,7 +5,6 @@ import com.github.pagehelper.PageHelper;
 import com.mwgroup.background.entity.Display;
 import com.mwgroup.background.service.DisplayService;
 import com.mwgroup.background.utils.DateUtils;
-import com.mwgroup.background.utils.DisplayUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -43,8 +42,10 @@ public class DisplayController {
 
     //新增功能
     @RequestMapping(value = "insert",method = RequestMethod.GET)
-    public int insert(Display record)  {
-        return displayService.insertSelective(DisplayUtils.displayadd(record));
+    public int insert(Display record) throws ParseException {
+        record.setCreateTime(DateUtils.date());
+        record.setUpdateTime(DateUtils.date());
+        return displayService.insertSelective(record);
     }
 
     //根据id查询Text 也可实现编辑的操作

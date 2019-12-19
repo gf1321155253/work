@@ -1,13 +1,11 @@
 package com.mwgroup.background.service;
 
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.github.pagehelper.Page;
 import com.mwgroup.background.dao.ProductMapper;
 import com.mwgroup.background.entity.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 
 @Service
 public class ProductService {
@@ -38,6 +36,11 @@ public class ProductService {
     //算力产品查询 搜索
     public Page<Product> select(String title,Long id){
         return productMapper.select(title,id);
+    }
+
+    //根据id查询数据 修改
+    public Product selectById(Long id){
+        return productMapper.selectById(id);
     }
 
 }

@@ -5,6 +5,9 @@ import com.mwgroup.background.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 /*
 * 描述：用户登陆验证
 * */
@@ -22,7 +25,9 @@ public class LoginController {
     * */
     @CrossOrigin
     @RequestMapping(value = "login",method = RequestMethod.GET)
-    public String login(User user){
+    public String login(User user, HttpServletRequest request){
+        HttpSession session = request.getSession();
+        session.setAttribute("user","user");
         User u = userService.selectByMobile(user);
         if (u == null){
             return "0";

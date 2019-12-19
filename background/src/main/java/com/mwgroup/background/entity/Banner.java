@@ -9,11 +9,11 @@ public class Banner {
 
     private String bannerScene;
 
-    private Date createTime;
+    private Date create_time;
 
-    private Date updateTime;
+    private Date update_time;
 
-    private Byte isDeleted;
+    private Byte is_deleted;
 
     public Integer getId() {
         return id;
@@ -40,27 +40,27 @@ public class Banner {
     }
 
     public Date getCreateTime() {
-        return createTime;
+        return create_time;
     }
 
     public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
+        this.create_time = createTime;
     }
 
     public Date getUpdateTime() {
-        return updateTime;
+        return update_time;
     }
 
     public void setUpdateTime(Date updateTime) {
-        this.updateTime = updateTime;
+        this.update_time = updateTime;
     }
 
     public Byte getIsDeleted() {
-        return isDeleted;
+        return is_deleted;
     }
 
     public void setIsDeleted(Byte isDeleted) {
-        this.isDeleted = isDeleted;
+        this.is_deleted = isDeleted;
     }
 
     @Override
@@ -69,9 +69,9 @@ public class Banner {
                 "id=" + id +
                 ", imgUrlList='" + imgUrlList + '\'' +
                 ", bannerScene='" + bannerScene + '\'' +
-                ", createTime=" + createTime +
-                ", updateTime=" + updateTime +
-                ", isDeleted=" + isDeleted +
+                ", createTime=" + create_time +
+                ", updateTime=" + update_time +
+                ", isDeleted=" + is_deleted +
                 '}';
     }
 }

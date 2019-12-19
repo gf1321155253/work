@@ -16,7 +16,7 @@ public class Product {
 
     private Integer period;
 
-    private Byte periodType;
+    private Byte period_type;
 
     private Byte type;
 
@@ -24,11 +24,11 @@ public class Product {
 
     private Byte sort;
 
-    private Date createTime;
+    private Date create_time;
 
-    private Date updateTime;
+    private Date update_time;
 
-    private Byte isDeleted;
+    private Byte is_deleted;
 
     public Long getPid() {
         return pid;
@@ -79,11 +79,11 @@ public class Product {
     }
 
     public Byte getPeriodType() {
-        return periodType;
+        return period_type;
     }
 
     public void setPeriodType(Byte periodType) {
-        this.periodType = periodType;
+        this.period_type = periodType;
     }
 
     public Byte getType() {
@@ -110,28 +110,28 @@ public class Product {
         this.sort = sort;
     }
 
-    public Date getCreateTime() {
-        return createTime;
+    public Date getCreate_time() {
+        return create_time;
     }
 
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
+    public void setCreateTime(Date create_time) {
+        this.create_time = create_time;
     }
 
-    public Date getUpdateTime() {
-        return updateTime;
+    public Date getUpdate_time() {
+        return update_time;
     }
 
-    public void setUpdateTime(Date updateTime) {
-        this.updateTime = updateTime;
+    public void setUpdateTime(Date update_time) {
+        this.update_time = update_time;
     }
 
     public Byte getIsDeleted() {
-        return isDeleted;
+        return is_deleted;
     }
 
-    public void setIsDeleted(Byte isDeleted) {
-        this.isDeleted = isDeleted;
+    public void setIsDeleted(Byte is_deleted) {
+        this.is_deleted = is_deleted;
     }
 
     @Override
@@ -143,13 +143,13 @@ public class Product {
                 ", stock=" + stock +
                 ", price=" + price +
                 ", period=" + period +
-                ", periodType=" + periodType +
+                ", periodType=" + period_type +
                 ", type=" + type +
                 ", source=" + source +
                 ", sort=" + sort +
-                ", createTime=" + createTime +
-                ", updateTime=" + updateTime +
-                ", isDeleted=" + isDeleted +
+                ", createTime=" + create_time +
+                ", updateTime=" + update_time +
+                ", isDeleted=" + is_deleted +
                 '}';
     }
 }

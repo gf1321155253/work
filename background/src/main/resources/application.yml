@@ -51,14 +51,14 @@ spring:
       allow_single_quotes: true
 
     #Spring boot视图配置
-  mvc:
-    view:
-      prefix: /WEB-INF/jsp/
-      suffix: .jsp
+#  mvc:
+#    view:
+#      prefix: /WEB-INF/jsp/
+#      suffix: .jsp
 
     #Mybatis的相关配置
 mybatis:
-  type-aliases-package: com.example.demo.entity
+  type-aliases-package: com.mwgroup.background.entity
   mapper-locations: classpath:mapper/*.xml
 
   #分页pagehelper的相关配置

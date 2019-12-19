@@ -15,11 +15,11 @@ public class User {
 
     private String password;
 
-    private Date createTime;
+    private Date create_time;
 
-    private Date updateTime;
+    private Date update_time;
 
-    private Byte isDeleted;
+    private Byte is_deleted;
 
     public Long getUid() {
         return uid;
@@ -70,27 +70,27 @@ public class User {
     }
 
     public Date getCreateTime() {
-        return createTime;
+        return create_time;
     }
 
     public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
+        this.create_time = createTime;
     }
 
     public Date getUpdateTime() {
-        return updateTime;
+        return update_time;
     }
 
     public void setUpdateTime(Date updateTime) {
-        this.updateTime = updateTime;
+        this.update_time = updateTime;
     }
 
     public Byte getIsDeleted() {
-        return isDeleted;
+        return is_deleted;
     }
 
     public void setIsDeleted(Byte isDeleted) {
-        this.isDeleted = isDeleted;
+        this.is_deleted = isDeleted;
     }
 
     @Override

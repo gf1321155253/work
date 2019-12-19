@@ -13,7 +13,7 @@ public class Display {
 
     private Date update_Time;
 
-    private Byte isDeleted;
+    private Byte is_deleted;
 
     public Integer getId() {
         return id;
@@ -56,11 +56,11 @@ public class Display {
     }
 
     public Byte getIsDeleted() {
-        return isDeleted;
+        return is_deleted;
     }
 
     public void setIsDeleted(Byte isDeleted) {
-        this.isDeleted = isDeleted;
+        this.is_deleted = isDeleted;
     }
 
     @Override
@@ -71,7 +71,7 @@ public class Display {
                 ", text='" + text + '\'' +
                 ", createTime=" + create_Time +
                 ", updateTime=" + update_Time +
-                ", isDeleted=" + isDeleted +
+                ", isDeleted=" + is_deleted +
                 '}';
     }
 }
