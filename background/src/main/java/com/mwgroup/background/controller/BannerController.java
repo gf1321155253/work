@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.List;
 
 /*
@@ -26,13 +27,26 @@ public class BannerController {
 
     //查询所有图片
     @RequestMapping(value = "findall",method = RequestMethod.GET)
-    public List<Banner> findall(){
-        return bannerService.findall();
+    public List<List<Banner>> findall(){
+        List<Banner> list1 = bannerService.findallByScence1();
+        List<Banner> list2 = bannerService.findallByScence2();
+        List<Banner> list3 = bannerService.findallByScence3();
+        List<Banner> list4 = bannerService.findallByScence4();
+        List<List<Banner>> list = new ArrayList<>();
+        list.add(list1);
+        list.add(list2);
+        list.add(list3);
+        list.add(list4);
+
+        return list;
     }
+
 
     //虚拟删除
     @RequestMapping(value = "del",method = RequestMethod.GET)
-    public int del(Banner record) throws ParseException {
+    public int del(Integer id) throws ParseException {
+        Banner record = new Banner();
+        record.setId(id);
         record.setUpdateTime(DateUtils.date());
         record.setIsDeleted((byte)1);
         return bannerService.updateByPrimaryKeySelective(record);

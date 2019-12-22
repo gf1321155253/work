@@ -10,19 +10,47 @@
     <result column="is_deleted" jdbcType="TINYINT" property="isDeleted" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, img_url_list, banner_scene, create_time, update_time, is_deleted
+    id, img_url_list, banner_scene,create_time,update_time,is_deleted
   </sql>
 
   <!--查询所有图片-->
-  <select id="findall" resultType="com.mwgroup.background.entity.Banner">
+  <!--<select id="findall" resultType="com.mwgroup.background.entity.Banner">
     select
     <include refid="Base_Column_List" />
     from banner
-    where id_deleted = 0
+    where is_deleted = 0
+  </select>-->
+
+  <!--查询场景为1的图片-->
+  <select id="findallByScence1" resultType="com.mwgroup.background.entity.Banner">
+    select *
+    from banner
+    where is_deleted = 0 and banner_scene = 1
+  </select>
+
+  <!--查询场景为2的图片-->
+  <select id="findallByScence2" resultType="com.mwgroup.background.entity.Banner">
+    select *
+    from banner
+    where is_deleted = 0 and banner_scene = 2
+  </select>
+
+  <!--查询场景为3的图片-->
+  <select id="findallByScence3" resultType="com.mwgroup.background.entity.Banner">
+    select *
+    from banner
+    where is_deleted = 0 and banner_scene = 3
+  </select>
+
+  <!--查询场景为4的图片-->
+  <select id="findallByScence4" resultType="com.mwgroup.background.entity.Banner">
+    select *
+    from banner
+    where is_deleted = 0 and banner_scene = 4
   </select>
 
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
+    select
     <include refid="Base_Column_List" />
     from banner
     where id = #{id,jdbcType=INTEGER}
@@ -32,10 +60,10 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.mwgroup.background.entity.Banner">
-    insert into banner (id, img_url_list, banner_scene, 
+    insert into banner (id, img_url_list, banner_scene,
       create_time, update_time, is_deleted
       )
-    values (#{id,jdbcType=INTEGER}, #{imgUrlList,jdbcType=VARCHAR}, #{bannerScene,jdbcType=VARCHAR}, 
+    values (#{id,jdbcType=INTEGER}, #{imgUrlList,jdbcType=VARCHAR}, #{bannerScene,jdbcType=VARCHAR},
       #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{isDeleted,jdbcType=TINYINT}
       )
   </insert>

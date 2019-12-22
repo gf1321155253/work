@@ -58,9 +58,8 @@ public class ConnectController {
 
     //改变审批状态
     @RequestMapping(value = "update",method = RequestMethod.GET)
-    public int updateByPrimaryKeySelective(Connect record) throws ParseException {
-        record.setUpdateTime(DateUtils.date());
-        return connectService.updateByPrimaryKeySelective(record);
+    public int update(Integer id,byte status) {
+        return connectService.update(id,status);
     }
 
 }

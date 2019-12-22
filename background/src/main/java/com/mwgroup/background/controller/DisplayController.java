@@ -49,7 +49,6 @@ public class DisplayController {
     }
 
     //根据id查询Text 也可实现编辑的操作
-    @CrossOrigin
     @RequestMapping(value = "select",method = RequestMethod.GET)
     public Display selectByPrimaryKey(Integer id){
         return displayService.selectByPrimaryKey(id);

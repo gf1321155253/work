@@ -28,12 +28,17 @@ public class ProductController {
     @Autowired
     private ProductService productService;
 
-    //显示所有算力产品
+    //显示所有算力产品 默认的
+    //查询算力 根据算力名称和产品id
     @RequestMapping(value = "findall",method = RequestMethod.GET)
-    public Page<Product> all(Integer pageNum,Integer pageSize){
-        Page page = PageHelper.startPage(pageNum, pageSize);
-        productService.findall();
-        return productService.findall();
+    public Page<Product> select(Integer pageNum,Integer pageSize,String title, Long id){
+        PageHelper.startPage(pageNum,pageSize);
+        if (title == null && id == null){
+            return productService.findall();
+        }
+        else {
+            return productService.select(title,id);
+        }
     }
     //获取所有页数
     @RequestMapping(value = "page",method = RequestMethod.GET)
@@ -73,17 +78,6 @@ public class ProductController {
     }
 
 
-    //查询算力 根据算力名称和产品id
-    @CrossOrigin
-    @RequestMapping(value = "selectById",method = RequestMethod.GET)
-    public Page<Product> select(Integer pageNum,Integer pageSize,String title, Long id){
-        PageHelper.startPage(pageNum,pageSize);
-        if (title == null && id == null){
-            return productService.findall();
-        }
-        else {
-            return productService.select(title,id);
-        }
-    }
+
 
 }

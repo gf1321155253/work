@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mwgroup.background.dao.UserIdentifyMapper">
+  <resultMap id="BaseResultMap" type="com.mwgroup.background.entity.UserIdentify">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="uid" jdbcType="BIGINT" property="uid" />
+    <result column="nationality" jdbcType="VARCHAR" property="nationality" />
+    <result column="first_name" jdbcType="VARCHAR" property="firstName" />
+    <result column="last_name" jdbcType="VARCHAR" property="lastName" />
+    <result column="id_type" jdbcType="TINYINT" property="idType" />
+    <result column="id_number" jdbcType="VARCHAR" property="idNumber" />
+    <result column="sex" jdbcType="TINYINT" property="sex" />
+    <result column="status" jdbcType="TINYINT" property="status" />
+    <result column="front_img" jdbcType="VARCHAR" property="frontImg" />
+    <result column="back_img" jdbcType="VARCHAR" property="backImg" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="is_deleted" jdbcType="TINYINT" property="isDeleted" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, uid, nationality, first_name, last_name, id_type, id_number, sex, status, front_img, 
+    back_img, create_time, update_time, is_deleted
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from user_identify
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from user_identify
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.mwgroup.background.entity.UserIdentify">
+    insert into user_identify (id, uid, nationality, 
+      first_name, last_name, id_type, 
+      id_number, sex, status, 
+      front_img, back_img, create_time, 
+      update_time, is_deleted)
+    values (#{id,jdbcType=INTEGER}, #{uid,jdbcType=BIGINT}, #{nationality,jdbcType=VARCHAR}, 
+      #{firstName,jdbcType=VARCHAR}, #{lastName,jdbcType=VARCHAR}, #{idType,jdbcType=TINYINT}, 
+      #{idNumber,jdbcType=VARCHAR}, #{sex,jdbcType=TINYINT}, #{status,jdbcType=TINYINT}, 
+      #{frontImg,jdbcType=VARCHAR}, #{backImg,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{isDeleted,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.mwgroup.background.entity.UserIdentify">
+    insert into user_identify
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="uid != null">
+        uid,
+      </if>
+      <if test="nationality != null">
+        nationality,
+      </if>
+      <if test="firstName != null">
+        first_name,
+      </if>
+      <if test="lastName != null">
+        last_name,
+      </if>
+      <if test="idType != null">
+        id_type,
+      </if>
+      <if test="idNumber != null">
+        id_number,
+      </if>
+      <if test="sex != null">
+        sex,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="frontImg != null">
+        front_img,
+      </if>
+      <if test="backImg != null">
+        back_img,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="isDeleted != null">
+        is_deleted,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="uid != null">
+        #{uid,jdbcType=BIGINT},
+      </if>
+      <if test="nationality != null">
+        #{nationality,jdbcType=VARCHAR},
+      </if>
+      <if test="firstName != null">
+        #{firstName,jdbcType=VARCHAR},
+      </if>
+      <if test="lastName != null">
+        #{lastName,jdbcType=VARCHAR},
+      </if>
+      <if test="idType != null">
+        #{idType,jdbcType=TINYINT},
+      </if>
+      <if test="idNumber != null">
+        #{idNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=TINYINT},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="frontImg != null">
+        #{frontImg,jdbcType=VARCHAR},
+      </if>
+      <if test="backImg != null">
+        #{backImg,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDeleted != null">
+        #{isDeleted,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mwgroup.background.entity.UserIdentify">
+    update user_identify
+    <set>
+      <if test="uid != null">
+        uid = #{uid,jdbcType=BIGINT},
+      </if>
+      <if test="nationality != null">
+        nationality = #{nationality,jdbcType=VARCHAR},
+      </if>
+      <if test="firstName != null">
+        first_name = #{firstName,jdbcType=VARCHAR},
+      </if>
+      <if test="lastName != null">
+        last_name = #{lastName,jdbcType=VARCHAR},
+      </if>
+      <if test="idType != null">
+        id_type = #{idType,jdbcType=TINYINT},
+      </if>
+      <if test="idNumber != null">
+        id_number = #{idNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        sex = #{sex,jdbcType=TINYINT},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="frontImg != null">
+        front_img = #{frontImg,jdbcType=VARCHAR},
+      </if>
+      <if test="backImg != null">
+        back_img = #{backImg,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDeleted != null">
+        is_deleted = #{isDeleted,jdbcType=TINYINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mwgroup.background.entity.UserIdentify">
+    update user_identify
+    set uid = #{uid,jdbcType=BIGINT},
+      nationality = #{nationality,jdbcType=VARCHAR},
+      first_name = #{firstName,jdbcType=VARCHAR},
+      last_name = #{lastName,jdbcType=VARCHAR},
+      id_type = #{idType,jdbcType=TINYINT},
+      id_number = #{idNumber,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=TINYINT},
+      status = #{status,jdbcType=TINYINT},
+      front_img = #{frontImg,jdbcType=VARCHAR},
+      back_img = #{backImg,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      is_deleted = #{isDeleted,jdbcType=TINYINT}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+
+  <!--修改审核状态-->
+  <update id="update">
+    UPDATE user_identify
+    SET status = #{status}
+    WHERE uid = #{uid}
+  </update>
+
+
+</mapper>

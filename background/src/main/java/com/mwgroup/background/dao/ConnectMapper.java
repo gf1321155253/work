@@ -3,6 +3,7 @@ package com.mwgroup.background.dao;
 import com.github.pagehelper.Page;
 import com.mwgroup.background.entity.Connect;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -27,5 +28,8 @@ public interface ConnectMapper {
 
     //显示所有代理商申请的信息
     Page<Connect> findallByType0();
+
+    //修改审核状态
+    int update(@Param("id")long id, @Param("status")byte status);
 
 }

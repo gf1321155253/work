@@ -5,9 +5,9 @@ import java.util.Date;
 public class Banner {
     private Integer id;
 
-    private String imgUrlList;
+    private String img_url_list;
 
-    private String bannerScene;
+    private String banner_scene;
 
     private Date create_time;
 
@@ -24,19 +24,19 @@ public class Banner {
     }
 
     public String getImgUrlList() {
-        return imgUrlList;
+        return img_url_list;
     }
 
     public void setImgUrlList(String imgUrlList) {
-        this.imgUrlList = imgUrlList == null ? null : imgUrlList.trim();
+        this.img_url_list = imgUrlList == null ? null : imgUrlList.trim();
     }
 
     public String getBannerScene() {
-        return bannerScene;
+        return banner_scene;
     }
 
     public void setBannerScene(String bannerScene) {
-        this.bannerScene = bannerScene == null ? null : bannerScene.trim();
+        this.banner_scene = bannerScene == null ? null : bannerScene.trim();
     }
 
     public Date getCreateTime() {
@@ -67,8 +67,8 @@ public class Banner {
     public String toString() {
         return "Banner{" +
                 "id=" + id +
-                ", imgUrlList='" + imgUrlList + '\'' +
-                ", bannerScene='" + bannerScene + '\'' +
+                ", imgUrlList='" + img_url_list + '\'' +
+                ", bannerScene='" + banner_scene + '\'' +
                 ", createTime=" + create_time +
                 ", updateTime=" + update_time +
                 ", isDeleted=" + is_deleted +

@@ -38,6 +38,13 @@
     order by type
   </select>
 
+  <!--修改审核状态-->
+  <update id="update">
+    UPDATE connect
+    SET states = #{status}
+    WHERE id = #{id}
+  </update>
+
 
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
     select 

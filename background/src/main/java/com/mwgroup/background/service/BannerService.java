@@ -18,6 +18,26 @@ public class BannerService {
         return bannerMapper.findall();
     }
 
+    // 查询场景为1的图片
+    public List<Banner> findallByScence1() {
+        return bannerMapper.findallByScence1();
+    }
+
+    // 查询场景为2的图片
+    public List<Banner> findallByScence2() {
+        return bannerMapper.findallByScence2();
+    }
+
+    // 查询场景为3的图片
+    public List<Banner> findallByScence3() {
+        return bannerMapper.findallByScence3();
+    }
+
+    // 查询场景为4的图片
+    public List<Banner> findallByScence4() {
+        return bannerMapper.findallByScence4();
+    }
+
     //虚拟删除
     public int updateByPrimaryKeySelective(Banner record){
         return bannerMapper.updateByPrimaryKeySelective(record);

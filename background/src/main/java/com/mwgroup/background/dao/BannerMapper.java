@@ -22,4 +22,17 @@ public interface BannerMapper {
 
     //查询所有图片
     List<Banner> findall();
+
+    // 查询场景为1的图片
+    List<Banner> findallByScence1();
+
+    // 查询场景为2的图片
+    List<Banner> findallByScence2();
+
+    // 查询场景为3的图片
+    List<Banner> findallByScence3();
+
+    // 查询场景为4的图片
+    List<Banner> findallByScence4();
+
 }

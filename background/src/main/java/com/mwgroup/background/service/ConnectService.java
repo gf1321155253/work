@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.github.pagehelper.Page;
 import com.mwgroup.background.dao.ConnectMapper;
 import com.mwgroup.background.entity.Connect;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,7 +27,7 @@ public class ConnectService {
     }
 
     //改变审批状态
-    public int updateByPrimaryKeySelective(Connect record){
-        return connectMapper.updateByPrimaryKeySelective(record);
+    public int update(long id, byte status){
+        return connectMapper.update(id,status);
     }
 }

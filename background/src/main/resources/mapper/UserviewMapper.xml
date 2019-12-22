@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mwgroup.background.dao.UserviewMapper">
+  <resultMap id="BaseResultMap" type="com.mwgroup.background.entity.Userview">
+    <result column="uid" jdbcType="BIGINT" property="uid" />
+    <result column="mobile" jdbcType="VARCHAR" property="mobile" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="userisdeleted" jdbcType="TINYINT" property="userisdeleted" />
+    <result column="nationality" jdbcType="VARCHAR" property="nationality" />
+    <result column="first_name" jdbcType="VARCHAR" property="firstName" />
+    <result column="last_name" jdbcType="VARCHAR" property="lastName" />
+    <result column="id_type" jdbcType="TINYINT" property="idType" />
+    <result column="id_number" jdbcType="VARCHAR" property="idNumber" />
+    <result column="sex" jdbcType="TINYINT" property="sex" />
+    <result column="status" jdbcType="TINYINT" property="status" />
+    <result column="front_img" jdbcType="VARCHAR" property="frontImg" />
+    <result column="back_img" jdbcType="VARCHAR" property="backImg" />
+    <result column="identifyupdate_time" jdbcType="TIMESTAMP" property="identifyupdateTime" />
+    <result column="identifydeleted" jdbcType="TINYINT" property="identifydeleted" />
+  </resultMap>
+
+  <!--显示所有未审核状态的数据  status = 0-->
+  <select id="findallByStatus0" resultType="com.mwgroup.background.entity.Userview">
+    select *
+    from userview
+    where userisdeleted = 0 and identifydeleted = 0 and status = 0
+  </select>
+
+  <!--显示所有已审核状态的数据  status = 1,2-->
+  <select id="findallByStatus12" resultType="com.mwgroup.background.entity.Userview">
+    select *
+    from userview
+    where userisdeleted = 0 and identifydeleted = 0 and status in (1,2)
+    order by status
+  </select>
+
+
+
+  <!--根据uid查询已审核用户-->
+  <select id="select" resultType="com.mwgroup.background.entity.Userview">
+    select *
+    from userview
+    where userisdeleted = 0 and identifydeleted = 0 and uid = #{uid}
+  </select>
+
+
+  <insert id="insert" parameterType="com.mwgroup.background.entity.Userview">
+    insert into userview (uid, mobile, email, 
+      name, update_time, userisdeleted, 
+      nationality, first_name, last_name, 
+      id_type, id_number, sex, 
+      status, front_img, back_img, 
+      identifyupdate_time, identifydeleted)
+    values (#{uid,jdbcType=BIGINT}, #{mobile,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
+      #{name,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, #{userisdeleted,jdbcType=TINYINT}, 
+      #{nationality,jdbcType=VARCHAR}, #{firstName,jdbcType=VARCHAR}, #{lastName,jdbcType=VARCHAR}, 
+      #{idType,jdbcType=TINYINT}, #{idNumber,jdbcType=VARCHAR}, #{sex,jdbcType=TINYINT}, 
+      #{status,jdbcType=TINYINT}, #{frontImg,jdbcType=VARCHAR}, #{backImg,jdbcType=VARCHAR}, 
+      #{identifyupdateTime,jdbcType=TIMESTAMP}, #{identifydeleted,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.mwgroup.background.entity.Userview">
+    insert into userview
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="uid != null">
+        uid,
+      </if>
+      <if test="mobile != null">
+        mobile,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="userisdeleted != null">
+        userisdeleted,
+      </if>
+      <if test="nationality != null">
+        nationality,
+      </if>
+      <if test="firstName != null">
+        first_name,
+      </if>
+      <if test="lastName != null">
+        last_name,
+      </if>
+      <if test="idType != null">
+        id_type,
+      </if>
+      <if test="idNumber != null">
+        id_number,
+      </if>
+      <if test="sex != null">
+        sex,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="frontImg != null">
+        front_img,
+      </if>
+      <if test="backImg != null">
+        back_img,
+      </if>
+      <if test="identifyupdateTime != null">
+        identifyupdate_time,
+      </if>
+      <if test="identifydeleted != null">
+        identifydeleted,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="uid != null">
+        #{uid,jdbcType=BIGINT},
+      </if>
+      <if test="mobile != null">
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userisdeleted != null">
+        #{userisdeleted,jdbcType=TINYINT},
+      </if>
+      <if test="nationality != null">
+        #{nationality,jdbcType=VARCHAR},
+      </if>
+      <if test="firstName != null">
+        #{firstName,jdbcType=VARCHAR},
+      </if>
+      <if test="lastName != null">
+        #{lastName,jdbcType=VARCHAR},
+      </if>
+      <if test="idType != null">
+        #{idType,jdbcType=TINYINT},
+      </if>
+      <if test="idNumber != null">
+        #{idNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=TINYINT},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="frontImg != null">
+        #{frontImg,jdbcType=VARCHAR},
+      </if>
+      <if test="backImg != null">
+        #{backImg,jdbcType=VARCHAR},
+      </if>
+      <if test="identifyupdateTime != null">
+        #{identifyupdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="identifydeleted != null">
+        #{identifydeleted,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+</mapper>
