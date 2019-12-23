@@ -2,9 +2,11 @@ package com.mwgroup.background.controller;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
+import com.mwgroup.background.entity.Product;
 import com.mwgroup.background.entity.Userview;
 import com.mwgroup.background.service.UserIdentifyService;
 import com.mwgroup.background.service.UserviewService;
+import com.mwgroup.background.utils.PagesUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,21 +32,27 @@ public class UserviewController {
 
     //未审核用户数据
     @RequestMapping(value = "findallByStatus0",method = RequestMethod.GET)
-    public Page<Userview> findallByStatus0(Integer pageNum, Integer pageSize) {
+    public List<Userview> findallByStatus0(Integer pageNum, Integer pageSize) {
         PageHelper.startPage(pageNum,pageSize);
-        return userViewService.findallByStatus0();
+        Page<Userview> page = userViewService.findallByStatus0();
+        List<Userview> list = PagesUtils.data(pageNum,pageSize,page);
+        return list;
     }
 
 
     //已审核用户数据
     @RequestMapping(value = "findallByStatus12",method = RequestMethod.GET)
-    public Page<Userview> findallByStatus12(Integer pageNum, Integer pageSize,Long uid){
+    public List<Userview> findallByStatus12(Integer pageNum, Integer pageSize,Long uid){
         PageHelper.startPage(pageNum,pageSize);
         if (uid == null){
-            return userViewService.findallByStatus12();
+            Page<Userview> page = userViewService.findallByStatus12();
+            List<Userview> list = PagesUtils.data(pageNum,pageSize,page);
+            return list;
         }
         else {
-            return userViewService.select(uid);
+            Page<Userview> page = userViewService.select(uid);
+            List<Userview> list = PagesUtils.data(pageNum,pageSize,page);
+            return list;
         }
     }
 
@@ -53,6 +61,12 @@ public class UserviewController {
     @RequestMapping(value = "update",method = RequestMethod.GET)
     public int update(Long uid,Byte status){
         return userIdentifyService.update(uid,status);
+    }
+
+    //根据uid显示用户所有信息
+    @RequestMapping(value = "selectByuid",method = RequestMethod.GET)
+    public List<Userview> select(long uid){
+        return userViewService.select(uid);
     }
     
 }

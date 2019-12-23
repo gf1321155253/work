@@ -5,6 +5,7 @@ import com.github.pagehelper.PageHelper;
 import com.mwgroup.background.entity.Display;
 import com.mwgroup.background.service.DisplayService;
 import com.mwgroup.background.utils.DateUtils;
+import com.mwgroup.background.utils.PagesUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.text.ParseException;
+import java.util.List;
 
 
 
@@ -29,9 +31,11 @@ public class DisplayController {
 
     //显示所有的通知公告
     @RequestMapping(value = "findall",method = RequestMethod.GET)
-    public Page<Display> all(Integer pageNum,Integer pageSize){     //pageNum表示第几页  pageSize表示一页有几个数据
+    public List all(Integer pageNum, Integer pageSize){     //pageNum表示第几页  pageSize表示一页有几个数据
         PageHelper.startPage(pageNum,pageSize);
-        return displayService.findall();
+        Page<Display> page = displayService.findall();
+        List<Display> list = PagesUtils.data(pageNum,pageSize,page);
+        return list;
     }
 
     //根据id删除通知公告(update set操作)

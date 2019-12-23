@@ -20,7 +20,8 @@
 
   <!--显示所有数据-->
   <select id="findall" resultType="com.mwgroup.background.entity.Order">
-    SELECT * FROM `order`
+    SELECT  id, pid, title, uid, price, num, `type` * 1 as type, status * 1 as status, create_time, update_time, is_deleted
+    FROM `order`
   </select>
 
 

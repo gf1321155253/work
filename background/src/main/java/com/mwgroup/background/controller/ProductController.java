@@ -3,9 +3,11 @@ package com.mwgroup.background.controller;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.mwgroup.background.entity.Order;
 import com.mwgroup.background.entity.Product;
 import com.mwgroup.background.service.ProductService;
 import com.mwgroup.background.utils.DateUtils;
+import com.mwgroup.background.utils.PagesUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,13 +33,17 @@ public class ProductController {
     //显示所有算力产品 默认的
     //查询算力 根据算力名称和产品id
     @RequestMapping(value = "findall",method = RequestMethod.GET)
-    public Page<Product> select(Integer pageNum,Integer pageSize,String title, Long id){
+    public List<Product> select(Integer pageNum,Integer pageSize,String title, Long id){
         PageHelper.startPage(pageNum,pageSize);
         if (title == null && id == null){
-            return productService.findall();
+            Page<Product> page = productService.findall();
+            List<Product> list = PagesUtils.data(pageNum,pageSize,page);
+            return list;
         }
         else {
-            return productService.select(title,id);
+            Page<Product> page = productService.select(title,id);
+            List<Product> list = PagesUtils.data(pageNum,pageSize,page);
+            return list;
         }
     }
     //获取所有页数

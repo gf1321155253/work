@@ -3,6 +3,7 @@
 <mapper namespace="com.mwgroup.background.dao.ConnectMapper">
   <resultMap id="BaseResultMap" type="com.mwgroup.background.entity.Connect">
     <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="pages" jdbcType="INTEGER" property="pages"/>
     <result column="uid" jdbcType="BIGINT" property="uid" />
     <result column="mobile" jdbcType="VARCHAR" property="mobile" />
     <result column="email" jdbcType="VARCHAR" property="email" />

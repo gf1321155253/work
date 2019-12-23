@@ -37,7 +37,6 @@ public class BannerController {
         list.add(list2);
         list.add(list3);
         list.add(list4);
-
         return list;
     }
 
